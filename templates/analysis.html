@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPulse | Predict</title>
+    <link href="{{ url_for('static', filename = 'style.css') }}" rel="stylesheet" />
+</head>
+<body>
+    <div class="form-page">
+        <nav class="nav">
+            <div class="brand">
+                <div class="logo-dot">E</div>
+                EduPulse
+            </div>
+            <div class="nav-actions">
+                <a class="button" href="{{ url_for('index') }}">Home</a>
+                <a class="button primary" href="{{ url_for('analysis') }}">Predict</a>
+            </div>
+        </nav>
+
+        <header class="form-header">
+            <span class="pill">Enter factors, keep backend intact</span>
+            <h1>Prediction intake</h1>
+            <p class="muted">These fields map directly to the model features: gender, study hours, attendance, past score, parental education, internet access, extracurriculars, and subject.</p>
+        </header>
+
+        <div class="form-card">
+            <form method="POST" action="/predict">
+                <div class="input-grid">
+                    <div class="field">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="math">Maths</option>
+                            <option value="science">Science</option>
+                            <option value="history">History</option>
+                            <option value="geography">Geography</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="parental_education">Parental education</label>
+                        <select id="parental_education" name="parental_education" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="highschool">High School</option>
+                            <option value="phd">PhD</option>
+                            <option value="bachelors">Bachelors</option>
+                            <option value="masters">Masters</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="extracurricular">Extracurricular</label>
+                        <select id="extracurricular" name="extracurricular" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="attendance_rate">Attendance rate (%)</label>
+                        <input id="attendance_rate" type="number" name="attendance_rate" placeholder="e.g., 95" required min="0" max="100" step="0.1">
+                    </div>
+
+                    <div class="field">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="internet_access">Internet access</label>
+                        <select id="internet_access" name="internet_access" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="study_hours">Study hours / week</label>
+                        <input id="study_hours" type="number" name="study_hours" placeholder="e.g., 10" required min="0" step="0.1">
+                    </div>
+
+                    <div class="field">
+                        <label for="past_score">Past exam score</label>
+                        <input id="past_score" type="number" name="past_score" placeholder="e.g., 88" required min="0" max="100" step="0.1">
+                    </div>
+                </div>
+
+                <div class="cta-row">
+                    <a class="button" href="{{ url_for('index') }}">Back home</a>
+                    <button class="button primary" type="submit">Predict final score</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

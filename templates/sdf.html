@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+
+    <link href="{{ url_for('static', filename = 'style.css') }}" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="input-page"> 
+        <div class="title">
+            Student Performance Prediction Model
+        </div>
+
+        <form method="POST" action="/predict" class="form-container">
+
+            <!-- <div class="form-container"> -->
+    
+                <div class="col">
+                    <div class="row">
+                        <label>Select subject:</label>
+                        <select class="dropdown" name="subject">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="math">Maths</option>
+                            <option value="science">Science</option>
+                            <option value="history">History</option>
+                            <option value="geography">Geography</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label>Parental education:</label>
+                        <select class="dropdown" name="parental_education">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="highschool">High School</option>
+                            <option value="phd">PhD</option>
+                            <option value="bachelors">Bachelors</option>
+                            <option value="masters">Masters</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label>Extracurricular:</label>
+                        <select class="dropdown" name="extracurricular">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label>Attendance rate (%):</label>
+                        <input type="number" class="input-box" name="attendance_rate" placeholder="Enter %">
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="row">
+                        <label>Gender:</label>
+                        <select class="dropdown" name="gender">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label>Internet access:</label>
+                        <select class="dropdown" name="internet_access">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label>Study hours/week:</label>
+                        <input type="number" class="input-box" name="study_hours" placeholder="Enter hours">
+                    </div>
+                    <div class="row">
+                        <label>Past exam score:</label>
+                        <input type="number" class="input-box" name="past_score" placeholder="Enter score">
+                    </div>
+                </div>
+
+            </div> <div class="submit-container">
+                <button type="submit" class="submit-btn">Submit</button>
+            </div>
+
+        </form>
+
+     </body>
+
+</html>

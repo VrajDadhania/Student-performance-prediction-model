@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPulse | Result</title>
+    <link href="{{ url_for('static', filename = 'style.css') }}" rel="stylesheet" />
+</head>
+<body class="result-page">
+    <div class="result-card">
+        <div class="pill">Prediction complete</div>
+        <h2>Your forecast</h2>
+        <div class="result-chip">
+            Predicted score: {{ prediction }}
+        </div>
+        <p class="muted">Rounded to the nearest whole number. Cap at 97 is preserved from the original backend logic.</p>
+        <div class="cta-row" style="justify-content:center;">
+            <a class="button" href="{{ url_for('analysis') }}">Run another</a>
+            <a class="button primary" href="{{ url_for('index') }}">Back home</a>
+        </div>
+    </div>
+</body>
+</html>

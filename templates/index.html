@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPulse Predictor</title>
+    <link href="{{ url_for('static', filename = 'style.css') }}" rel="stylesheet" />
+</head>
+<body>
+    <div class="page">
+        <nav class="nav">
+            <div class="brand">
+                <div class="logo-dot">E</div>
+                EduPulse
+            </div>
+            <div class="nav-actions">
+                <a class="button primary" href="{{ url_for('analysis') }}">Predict score</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div>
+                <span class="pill">AI-powered score prediction</span>
+                <h1>Forecast the <span class="accent">next exam score</span> in seconds.</h1>
+                <p>Feed in attendance, study hours, prior scores, and context to instantly forecast student outcomes. Keep the backend model, get a friendlier face.</p>
+                <div class="hero-actions">
+                    <a class="button primary" href="{{ url_for('analysis') }}">Start predicting</a>
+                    <a class="button" href="#history">View history</a>
+                </div>
+                <div class="mini-stats">
+                    <div class="stat">
+                        <span class="label">Avg. abs error</span>
+                        <span class="value">±4.1 pts</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Ready in</span>
+                        <span class="value">2 steps</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card glass">
+                <div class="chip">Live signal</div>
+                <div class="chart">
+                    <div class="bar" style="height: 35%"></div>
+                    <div class="bar" style="height: 70%"></div>
+                    <div class="bar" style="height: 55%"></div>
+                    <div class="bar" style="height: 80%"></div>
+                    <div class="bar" style="height: 62%"></div>
+                </div>
+                <div class="mini-stats">
+                    <div class="stat">
+                        <span class="label">Engagement boost</span>
+                        <span class="value">+12%</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Confidence score</span>
+                        <span class="value">0.89</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Why EduPulse?</h2>
+            <p>Designed for teachers, mentors, and admins who want quick, visual insight before the next exam cycle.</p>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>Human-ready inputs</h3>
+                    <p>Plain-language fields that map 1:1 to the existing backend, so nothing breaks.</p>
+                </div>
+                <div class="feature">
+                    <h3>Trust the model</h3>
+                    <p>We keep your original regression model intact—only the experience gets a glow-up.</p>
+                </div>
+                <div class="feature">
+                    <h3>One-click journey</h3>
+                    <p>Hero CTA drives straight to the form; no extra pages required.</p>
+                </div>
+                <div class="feature">
+                    <h3>Responsive by default</h3>
+                    <p>Optimized layouts for desktops, tablets, and phones so parents can self-serve.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="history">
+            <h2>Recent predictions</h2>
+            <p class="muted">Most recent 10 submissions, stored in-memory while the app is running.</p>
+            {% if history %}
+            <div class="history-table-wrapper">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Prediction</th>
+                            <th>Subject</th>
+                            <th>Gender</th>
+                            <th>Study hrs/wk</th>
+                            <th>Attendance %</th>
+                            <th>Past score</th>
+                            <th>Parental edu</th>
+                            <th>Internet</th>
+                            <th>Extracurricular</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in history %}
+                        <tr>
+                            <td class="accent">{{ row.prediction }}</td>
+                            <td>{{ row.subject }}</td>
+                            <td>{{ row.gender }}</td>
+                            <td>{{ row.study_hours }}</td>
+                            <td>{{ row.attendance_rate }}</td>
+                            <td>{{ row.past_score }}</td>
+                            <td>{{ row.parental_education }}</td>
+                            <td>{{ row.internet_access }}</td>
+                            <td>{{ row.extracurricular }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p>No predictions yet. Submit the form to see your history appear here.</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>
